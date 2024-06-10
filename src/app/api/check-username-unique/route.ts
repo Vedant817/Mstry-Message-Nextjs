@@ -8,6 +8,13 @@ const usernameQuerySchema = z.object({
 })
 
 export async function GET(request:Request) {
+    //TODO: Use this in all other routes
+    if(request.method != 'GET'){ //? Not important for newer versions.
+        return Response.json({
+            success: false,
+            message: "Method not allowed"
+        }, {status: 405})
+    }
     await dbConnect()
 
     try {
