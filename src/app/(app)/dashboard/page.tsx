@@ -3,7 +3,7 @@ import { useToast } from '@/components/ui/use-toast'
 import { Message, User } from '@/model/User'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useSession } from 'next-auth/react'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { Key, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { acceptMessageSchema } from '@/schemas/acceptMessageSchema'
 import axios, { AxiosError } from 'axios'
@@ -165,7 +165,7 @@ const Dashboard = () => {
         {messages.length > 0 ? (
           messages.map((message, index) => (
             <MessageCard
-              key={message._id}
+              key={message._id as Key}
               message={message}
               onMessageDelete={handleDeleteMessage}
             />
